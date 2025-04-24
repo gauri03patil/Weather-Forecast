@@ -37,32 +37,67 @@
     <main class="max-w-6xl mx-auto px-4 mt-8 space-y-10">
 
       <!-- Search Section -->
-      <section class="bg-white/20 text-white p-6 rounded-xl shadow-lg backdrop-blur-sm">
-        <label for="city" class="block text-lg font-semibold mb-3">Enter a City Name</label>
-        <input type="text" id="city-input" placeholder="E.g., London" class="border border-gray-300 p-3 rounded-md w-full mb-4 text-gray-900 focus:ring-2 focus:ring-orange-300">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <button id="search-btn" class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-6 rounded-md hover:scale-105 transition duration-300 mb-4 sm:mb-0">🔍 Search</button>
-          <button id="current-location-btn" class="text-orange-200 font-semibold hover:underline">📍 Use Current Location</button>
+      <section class="bg-white/90 text-gray-900 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-[1.01]">
+        <label for="city" class="block text-xl font-bold mb-3 text-orange-600">
+          🌆 Enter a City Name
+        </label>
+      
+        <input 
+          type="text" 
+          id="city-input" 
+          placeholder="E.g., London" 
+          class="border-2 border-orange-400 focus:border-orange-500 p-3 rounded-lg w-full mb-4 text-gray-900 font-medium placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-sm"
+        >
+      
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <button 
+            id="search-btn" 
+            class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-6 rounded-md hover:scale-105 transition-all duration-300 shadow-md font-semibold"
+          >
+            🔍 Search
+          </button>
+      
+          <button 
+            id="current-location-btn" 
+            class="text-orange-500 font-semibold hover:underline transition duration-200"
+          >
+            📍 Use Current Location
+          </button>
         </div>
       </section>
 
       <!-- Current Weather and Tips -->
       <section class="grid md:grid-cols-2 gap-6">
-        <article id="currentWeather-div" class="bg-white/30 text-white p-6 rounded-xl shadow-lg backdrop-blur-sm">
-          <h2 class="text-xl font-bold mb-2">___ (_____)</h2>
-          <p>Temperature: ___°C</p>
-          <p>Wind: __ M/S</p>
-          <p>Humidity: __ %</p>
-          <div class="mt-3 flex items-center">
-            <!-- <img src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" class="w-10 h-10 mr-2">
-            <span>🌧️ Light Rain</span> -->
-            <h4>___</h4>
+        <article id="currentWeather-div" class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md">
+          <h2 class="text-2xl font-semibold mb-3 text-orange-600">City Name (Country Code)</h2>
+          
+          <div class="space-y-2 text-base font-medium">
+            <p>🌡️ Temperature: <span class="text-gray-700">___°C</span></p>
+            <p>💨 Wind: <span class="text-gray-700">__ m/s</span></p>
+            <p>💧 Humidity: <span class="text-gray-700">__%</span></p>
+          </div>
+      
+          <div class="mt-4 flex items-center space-x-3">
+            <!-- Uncomment and use when data is available -->
+            <!-- <img src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" class="w-12 h-12"> -->
+            <span class="text-lg font-semibold text-orange-500">🌧️ Light Rain</span>
           </div>
         </article>
 
-        <aside class="bg-white/20 text-white p-6 rounded-xl shadow-lg backdrop-blur-sm">
-          <h3 class="text-lg font-bold mb-2">💡 Weather Tip</h3>
-          <p>Carry an umbrella 🌂 — light rain expected. Humidity over 80% means moist air. Stay dry!</p>
+        <aside class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105">
+          <h3 class="text-xl font-bold mb-4 text-orange-600">💡 Weather Tips</h3>
+          
+          <div class="mb-3">
+            <p class="text-base font-medium leading-relaxed">
+              🌂 Carry an umbrella — light rain expected. Humidity over 80% means moist air. Stay dry!
+            </p>
+          </div>
+        
+          <div>
+            <p class="text-base font-medium leading-relaxed">
+              🧴 Use sunscreen even on cloudy days — UV rays can still cause damage.
+            </p>
+          </div>
         </aside>
       </section>
 
