@@ -12,8 +12,8 @@
     const cerateWeatherCard = (cityName, weatherItem, index) =>{
         if(index === 0){    // html for main weather card
             return `
-         <article id="currentWeather-div" class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105">
-    <h2 class="text-2xl font-semibold mb-3 text-orange-600">
+         <article id="currentWeather-div" class= "bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105">
+    <h2 class="text-lg font-bold mb-3 text-orange-600">
       ${cityName} (${weatherItem.dt_txt.split(" ")[0]})
     </h2>
 
@@ -32,7 +32,7 @@
         <img 
           src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" 
           alt="weather icon" 
-          class="w-20 h-20"
+          class="w-10 h-10"
         >
       </div>
       <h4 class="text-lg capitalize font-semibold text-orange-700">
@@ -40,7 +40,8 @@
       </h4>
     </div>
   </article>
-</article>
+
+
             
             `;
         }else{  // html for the other five day forecast card

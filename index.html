@@ -34,7 +34,7 @@
       <h1 class="text-4xl font-bold animate-blink">🌦️ Weather Dashboard</h1>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 mt-8 space-y-10 ">
+    <main class="max-w-6xl mx-auto px-10 mt-8 space-y-10">
 
       <!-- Search Section -->
       <section class="bg-white/90 text-gray-900 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-[1.01]">
@@ -68,25 +68,27 @@
 
       <!-- Current Weather and Tips -->
       <section class="grid md:grid-cols-2 gap-6">
-        <article id="currentWeather-div" class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md">
-          <h2 class="text-2xl font-semibold mb-3 text-orange-600">City Name (Country Code)</h2>
-          
-          <div class="space-y-2 text-base font-medium">
+        <article id="currentWeather-div" class="bg-white/80 text-gray-800 p-4 rounded-2xl shadow-2xl backdrop-blur-md text-sm">
+          <!-- ↓ Keep city name a bit bigger and bold -->
+          <h2 class="text-lg sm:text-xl font-bold mb-3 text-orange-600">City Name (Country Code)</h2>
+        
+          <!-- ↓ All paragraph texts will now use base text-sm from parent -->
+          <div class="space-y-2 font-medium">
             <p>🌡️ Temperature: <span class="text-gray-700">___°C</span></p>
             <p>💨 Wind: <span class="text-gray-700">__ m/s</span></p>
             <p>💧 Humidity: <span class="text-gray-700">__%</span></p>
           </div>
-      
+        
+          <!-- ↓ Adjust icon text size too -->
           <div class="mt-4 flex items-center space-x-3">
-            <!-- Uncomment and use when data is available -->
             <!-- <img src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" class="w-12 h-12"> -->
-            <span class="text-lg font-semibold text-orange-500">🌧️ Light Rain</span>
+            <span class="text-base font-semibold text-orange-500">🌧️ Light Rain</span>
           </div>
         </article>
 
-        <aside class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105">
+        <aside class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105 text-left">
           <h3 class="text-xl font-bold mb-4 text-orange-600">💡 Weather Tips</h3>
-          
+        
           <div class="mb-3">
             <p class="text-base font-medium leading-relaxed">
               🌂 Carry an umbrella — light rain expected. Humidity over 80% means moist air. Stay dry!
