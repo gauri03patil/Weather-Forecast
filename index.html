@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weather Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+   <link rel="stylesheet" href="./src/output.css">
   <style>
     @keyframes blink {
       0%, 100% { opacity: 1; }
@@ -23,7 +24,7 @@
   </video>
 
   <!-- Dark overlay -->
-  <div class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+  <div class="fixed inset-0  bg-opacity-50 z-10"></div>
 
   <!-- Page Content -->
   <div class="relative z-20">
@@ -38,23 +39,24 @@
       <!-- Search Section -->
       <section class="bg-white/20 text-white p-6 rounded-xl shadow-lg backdrop-blur-sm">
         <label for="city" class="block text-lg font-semibold mb-3">Enter a City Name</label>
-        <input type="text" id="city" placeholder="E.g., London" class="border border-gray-300 p-3 rounded-md w-full mb-4 text-gray-900 focus:ring-2 focus:ring-orange-300">
+        <input type="text" id="city-input" placeholder="E.g., London" class="border border-gray-300 p-3 rounded-md w-full mb-4 text-gray-900 focus:ring-2 focus:ring-orange-300">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-6 rounded-md hover:scale-105 transition duration-300 mb-4 sm:mb-0">🔍 Search</button>
-          <button class="text-orange-200 font-semibold hover:underline">📍 Use Current Location</button>
+          <button id="search-btn" class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-6 rounded-md hover:scale-105 transition duration-300 mb-4 sm:mb-0">🔍 Search</button>
+          <button id="current-location-btn" class="text-orange-200 font-semibold hover:underline">📍 Use Current Location</button>
         </div>
       </section>
 
       <!-- Current Weather and Tips -->
       <section class="grid md:grid-cols-2 gap-6">
-        <article class="bg-white/30 text-white p-6 rounded-xl shadow-lg backdrop-blur-sm">
-          <h2 class="text-xl font-bold mb-2">London (2024-04-23)</h2>
-          <p>Temperature: 7.06°C</p>
-          <p>Wind: 2.85 M/S</p>
-          <p>Humidity: 88%</p>
+        <article id="currentWeather-div" class="bg-white/30 text-white p-6 rounded-xl shadow-lg backdrop-blur-sm">
+          <h2 class="text-xl font-bold mb-2">___ (_____)</h2>
+          <p>Temperature: ___°C</p>
+          <p>Wind: __ M/S</p>
+          <p>Humidity: __ %</p>
           <div class="mt-3 flex items-center">
-            <img src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" class="w-10 h-10 mr-2">
-            <span>🌧️ Light Rain</span>
+            <!-- <img src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" class="w-10 h-10 mr-2">
+            <span>🌧️ Light Rain</span> -->
+            <h4>___</h4>
           </div>
         </article>
 
@@ -65,41 +67,42 @@
       </section>
 
       <!-- Forecast Cards -->
-      <section class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+      <section id="weather-card" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 rounded-xl shadow-md hover:scale-105 transition">
-          <h3 class="font-semibold mb-2">(2024-04-24)</h3>
-          <p>Temp: 5.67°C</p>
-          <p>Wind: 2.77 M/S</p>
-          <p>Humidity: 76%</p>
+          <h3 class="font-semibold mb-2">____</h3>
+          <p>Temp: __°C</p>
+          <p>Wind: __ M/S</p>
+          <p>Humidity: __%</p>
         </article>
         <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 rounded-xl shadow-md hover:scale-105 transition">
-          <h3 class="font-semibold mb-2">(2024-04-25)</h3>
-          <p>Temp: 5.23°C</p>
-          <p>Wind: 1.46 M/S</p>
-          <p>Humidity: 71%</p>
+          <h3 class="font-semibold mb-2">____</h3>
+          <p>Temp: __°C</p>
+          <p>Wind: __ M/S</p>
+          <p>Humidity: __%</p>
         </article>
         <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 rounded-xl shadow-md hover:scale-105 transition">
-          <h3 class="font-semibold mb-2">(2024-04-26)</h3>
-          <p>Temp: 7.66°C</p>
-          <p>Wind: 1.87 M/S</p>
-          <p>Humidity: 91%</p>
+          <h3 class="font-semibold mb-2">____</h3>
+          <p>Temp: __°C</p>
+          <p>Wind: __ M/S</p>
+          <p>Humidity: __%</p>
         </article>
         <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 rounded-xl shadow-md hover:scale-105 transition">
-          <h3 class="font-semibold mb-2">(2024-04-27)</h3>
-          <p>Temp: 9.09°C</p>
-          <p>Wind: 3.77 M/S</p>
-          <p>Humidity: 95%</p>
+          <h3 class="font-semibold mb-2">____</h3>
+          <p>Temp: __°C</p>
+          <p>Wind: __ M/S</p>
+          <p>Humidity: __%</p>
         </article>
         <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 rounded-xl shadow-md hover:scale-105 transition">
-          <h3 class="font-semibold mb-2">(2024-04-28)</h3>
-          <p>Temp: 8.46°C</p>
-          <p>Wind: 4.23 M/S</p>
-          <p>Humidity: 94%</p>
+          <h3 class="font-semibold mb-2">____</h3>
+          <p>Temp: __°C</p>
+          <p>Wind: __ M/S</p>
+          <p>Humidity: __%</p>
         </article>
       </section>
 
     </main>
   </div>
 
+  <script src="./script.js"></script>
 </body>
 </html>
