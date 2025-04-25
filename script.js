@@ -10,6 +10,7 @@ const API_KEY = "61148ff67c8a4dd22bdb3c8ca2d69837";
 
 const cerateWeatherCard = (cityName, weatherItem, index) => {
   if (index === 0) {
+    // current weather card
     return `
     <article id="currentWeather-div" class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105">
       <h2 class="text-lg font-bold mb-3 text-orange-600">
@@ -38,6 +39,7 @@ const cerateWeatherCard = (cityName, weatherItem, index) => {
       </div>
     </article>`;
   } else {
+    // weather cards 5 days
     return `<article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
       <h3 class="font-semibold mb-2 text-lg">(${weatherItem.dt_txt.split(" ")[0]})</h3>
       <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather icon" class="w-16 h-16 mb-3">

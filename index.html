@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weather Dashboard</title>
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
    <link rel="stylesheet" href="./src/output.css">
   <style>
     @keyframes blink {
@@ -14,6 +13,9 @@
     .animate-blink {
       animation: blink 1s infinite;
     }
+
+
+    
   </style>
 </head>
 <body class="relative min-h-screen text-white">
@@ -41,9 +43,6 @@
         <label for="city" class="block text-xl font-bold mb-3 text-orange-600">
           🌆 Enter a City Name
         </label>
-
-        
-      
         <input 
           type="text" 
           id="city-input" 
@@ -52,17 +51,16 @@
         >
 
         <!-- <div style="border: 3px solid orange; border-radius: 10px;" id="dropdown-container" class="relative mb-4 hidden  border-orange-400 focus:border-orange-500">
-          <select id="recent-cities-dropdown" class="w-full p-2 border rounded-md text-gray-800">
-            <option disabled selected>Recently Searched Cities</option>
+          <select id="recent-cities-dropdown" class="w-full p-2 border rounded-md text-gray-800 ">
+            <option disabled selected  id="test-option" class="sm:w-auto md:w-auto lg:w-auto xl:w-auto">Recently Searched Cities</option>
           </select>
         </div> -->
-      
-        <div id="dropdown-container" class=" w-full max-w-xs mx-auto mb-4">
-          <select id="recent-cities-dropdown" class="w-full max-w-xs p-2 rounded-md shadow-md text-gray-700 bg-white">
-            <!-- options will be injected -->
+
+        <div  id="dropdown-container" class="relative mb-4 hidden">
+          <select  id="recent-cities-dropdown" class="w-auto p-2 border rounded-md text-gray-800 sm:w-auto md:w-auto lg:w-full">
+            <option disabled selected  id="test-option">Recently Searched Cities</option>
           </select>
         </div>
-      
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <button 
             id="search-btn" 
@@ -159,9 +157,6 @@
 
    
   </div>
-
-
-
   <script src="./script.js"></script>
 </body>
 </html>
