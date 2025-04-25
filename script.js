@@ -42,7 +42,7 @@ const cerateWeatherCard = (cityName, weatherItem, index) => {
     // weather cards 5 days
     return `<article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
       <h3 class="font-semibold mb-2 text-lg">(${weatherItem.dt_txt.split(" ")[0]})</h3>
-      <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather icon" class="w-16 h-16 mb-3">
+      <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather icon" class="w-16 h-16 mb-3 bg-amber-600">
       <p class="mb-1">🌡️ Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</p>
       <p class="mb-1">💨 Wind: ${weatherItem.wind.speed} M/S</p>
       <p class="mb-1">💧 Humidity: ${weatherItem.main.humidity}%</p>
@@ -90,7 +90,7 @@ const getCityCoorinates = () => {
   fetch(api_url)
     .then((res) => res.json())
     .then((data) => {
-      if (!data.length) return alert(`No city found for ${cityName}`);
+      if (!data.length) return alert(`No city found for ${cityName} please enetr proper city or country name`);
       const { name, lat, lon } = data[0];
       getWeatherDetails(name, lat, lon);
     })
