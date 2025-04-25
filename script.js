@@ -39,19 +39,15 @@
         ${weatherItem.weather[0].description}
       </h4>
     </div>
-  </article>
-
-
-            
-            `;
+  </article `;
         }else{  // html for the other five day forecast card
-        return `<article class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 rounded-xl shadow-md hover:scale-105 transition">
-            <h3 class="font-semibold mb-2">(${weatherItem.dt_txt.split(" ")[0]})</h3>
-            <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather icon" class="w-16 h-16 mb-2">
-            <p>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</p>
-            <p>Wind: ${weatherItem.wind.speed} M/S</p>
-            <p>Humidity: ${weatherItem.main.humidity}%</p>
-            </article>
+        return `<article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
+  <h3 class="font-semibold mb-2 text-lg">(${weatherItem.dt_txt.split(" ")[0]})</h3>
+  <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather icon" class="w-16 h-16 mb-3">
+  <p class="mb-1">🌡️ Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</p>
+  <p class="mb-1">💨 Wind: ${weatherItem.wind.speed} M/S</p>
+  <p class="mb-1">💧 Humidity: ${weatherItem.main.humidity}%</p>
+</article>
         
         `
         }
@@ -150,3 +146,5 @@
     searchBtn.addEventListener("click", getCityCoorinates);
     currentLocationBtn.addEventListener("click", getUserCity);
     cityInput.addEventListener("keyup", e.key === "Enter" && getCityCoorinates)
+
+    
