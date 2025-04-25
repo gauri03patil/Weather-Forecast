@@ -41,6 +41,8 @@
         <label for="city" class="block text-xl font-bold mb-3 text-orange-600">
           🌆 Enter a City Name
         </label>
+
+        
       
         <input 
           type="text" 
@@ -48,6 +50,18 @@
           placeholder="E.g., London" 
           class="border-2 border-orange-400 focus:border-orange-500 p-3 rounded-lg w-full mb-4 text-gray-900 font-medium placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-sm"
         >
+
+        <!-- <div style="border: 3px solid orange; border-radius: 10px;" id="dropdown-container" class="relative mb-4 hidden  border-orange-400 focus:border-orange-500">
+          <select id="recent-cities-dropdown" class="w-full p-2 border rounded-md text-gray-800">
+            <option disabled selected>Recently Searched Cities</option>
+          </select>
+        </div> -->
+      
+        <div id="dropdown-container" class=" w-full max-w-xs mx-auto mb-4">
+          <select id="recent-cities-dropdown" class="w-full max-w-xs p-2 rounded-md shadow-md text-gray-700 bg-white">
+            <!-- options will be injected -->
+          </select>
+        </div>
       
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <button 
@@ -104,9 +118,9 @@
       </section>
 
       <!-- Forecast Cards -->
-      <section id="weather-card" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-4 py-6">
+      <section style="padding-bottom: 40px;" id="weather-card" class="grid gap-4 grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-4 py-6">
         <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
-          <h3 class="font-semibold text-lg mb-3">____</h3>
+          <h3 class="font-semibold text-lg mb-3">____</h3> 
           <p class="mb-2 text-base">🌡️ Temp: <span class="font-medium">__°C</span></p>
           <p class="mb-2 text-base">💨 Wind: <span class="font-medium">__ M/S</span></p>
           <p class="mb-2 text-base">💧 Humidity: <span class="font-medium">__%</span></p>
