@@ -1,11 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Dashboard</title>
+   <link rel="stylesheet" href="./src/output.css">
+  <style>
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .animate-blink {
+      animation: blink 1s infinite;
+    }
+
+
+    
+  </style>
 </head>
-<body>
-    <h1>Weather Dashboard</h1>
+<body class="relative min-h-screen text-white">
+
+  <!-- Video Background -->
+  <video autoplay muted loop class="fixed inset-0 w-full h-full object-cover z-0">
+    <source src="./Images/weather_Video_HD (3).mp4" type="video/mp4">
+  </video>
+
+  <!-- Dark overlay -->
+  <div class="fixed inset-0  bg-opacity-50 z-10"></div>
+
+  <!-- Page Content -->
+  <div class="relative z-20">
+
+    <!-- Header -->
+    <header class="text-center py-8 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500">
+      <h1 class="text-4xl font-bold animate-blink">🌦️ Weather Dashboard</h1>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-10 mt-8 space-y-10">
+
+      <!-- Search Section -->
+      <section class="bg-white/90 text-gray-900 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-[1.01]">
+        <label for="city" class="block text-xl font-bold mb-3 text-orange-600">
+          🌆 Enter a City Name
+        </label>
+        <input 
+          type="text" 
+          id="city-input" 
+          placeholder="E.g., London" 
+          class="border-2 border-orange-400 focus:border-orange-500 p-3 rounded-lg w-full mb-4 text-gray-900 font-medium placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-sm"
+        >
+
+        <!-- <div style="border: 3px solid orange; border-radius: 10px;" id="dropdown-container" class="relative mb-4 hidden  border-orange-400 focus:border-orange-500">
+          <select id="recent-cities-dropdown" class="w-full p-2 border rounded-md text-gray-800 ">
+            <option disabled selected  id="test-option" class="sm:w-auto md:w-auto lg:w-auto xl:w-auto">Recently Searched Cities</option>
+          </select>
+        </div> -->
+
+        <div  id="dropdown-container" class="relative mb-4 hidden">
+          <select  id="recent-cities-dropdown" class="w-auto p-2 border rounded-md text-gray-800 sm:w-auto md:w-auto lg:w-full">
+            <option disabled selected  id="test-option">Recently Searched Cities</option>
+          </select>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <button 
+            id="search-btn" 
+            class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-6 rounded-md hover:scale-105 transition-all duration-300 shadow-md font-semibold"
+          >
+            🔍 Search
+          </button>
+      
+          <button 
+            id="current-location-btn" 
+            class="text-orange-500 font-semibold hover:underline transition duration-200"
+          >
+            📍 Use Current Location
+          </button>
+        </div>
+      </section>
+
+      <!-- Current Weather and Tips -->
+      <section class="grid md:grid-cols-2 gap-6">
+        <article id="currentWeather-div" class="bg-white/80 text-gray-800 p-4 rounded-2xl shadow-2xl backdrop-blur-md text-sm">
+          <!-- ↓ Keep city name a bit bigger and bold -->
+          <h2 class="text-lg sm:text-xl font-bold mb-3 text-orange-600">City Name (Country Code)</h2>
+        
+          <!-- ↓ All paragraph texts will now use base text-sm from parent -->
+          <div class="space-y-2 font-medium">
+            <p>🌡️ Temperature: <span class="text-gray-700">___°C</span></p>
+            <p>💨 Wind: <span class="text-gray-700">__ m/s</span></p>
+            <p>💧 Humidity: <span class="text-gray-700">__%</span></p>
+          </div>
+        
+          <!-- ↓ Adjust icon text size too -->
+          <div class="mt-4 flex items-center space-x-3">
+            <!-- <img src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" class="w-12 h-12"> -->
+            <span class="text-base font-semibold text-orange-500">🌧️ Light Rain</span>
+          </div>
+        </article>
+
+        <aside class="bg-white/80 text-gray-800 p-6 rounded-2xl shadow-2xl backdrop-blur-md transition-transform hover:scale-105 text-left">
+          <h3 class="text-xl font-bold mb-4 text-orange-600">💡 Weather Tips</h3>
+        
+          <div class="mb-3">
+            <p class="text-base font-medium leading-relaxed">
+              🌂 Carry an umbrella — light rain expected. Humidity over 80% means moist air. Stay dry!
+            </p>
+          </div>
+        
+          <div>
+            <p class="text-base font-medium leading-relaxed">
+              🧴 Use sunscreen even on cloudy days — UV rays can still cause damage.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Forecast Cards -->
+      <section style="padding-bottom: 40px;" id="weather-card" class="grid gap-4 grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-4 py-6">
+        <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
+          <h3 class="font-semibold text-lg mb-3">____</h3> 
+          <p class="mb-2 text-base">🌡️ Temp: <span class="font-medium">__°C</span></p>
+          <p class="mb-2 text-base">💨 Wind: <span class="font-medium">__ M/S</span></p>
+          <p class="mb-2 text-base">💧 Humidity: <span class="font-medium">__%</span></p>
+        </article>
+      
+        <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
+          <h3 class="font-semibold text-lg mb-3">____</h3>
+          <p class="mb-2 text-base">🌡️ Temp: <span class="font-medium">__°C</span></p>
+          <p class="mb-2 text-base">💨 Wind: <span class="font-medium">__ M/S</span></p>
+          <p class="mb-2 text-base">💧 Humidity: <span class="font-medium">__%</span></p>
+        </article>
+      
+        <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
+          <h3 class="font-semibold text-lg mb-3">____</h3>
+          <p class="mb-2 text-base">🌡️ Temp: <span class="font-medium">__°C</span></p>
+          <p class="mb-2 text-base">💨 Wind: <span class="font-medium">__ M/S</span></p>
+          <p class="mb-2 text-base">💧 Humidity: <span class="font-medium">__%</span></p>
+        </article>
+      
+        <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
+          <h3 class="font-semibold text-lg mb-3">____</h3>
+          <p class="mb-2 text-base">🌡️ Temp: <span class="font-medium">__°C</span></p>
+          <p class="mb-2 text-base">💨 Wind: <span class="font-medium">__ M/S</span></p>
+          <p class="mb-2 text-base">💧 Humidity: <span class="font-medium">__%</span></p>
+        </article>
+      
+        <article class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-md hover:scale-105 transition text-white text-center flex flex-col items-center">
+          <h3 class="font-semibold text-lg mb-3">____</h3>
+          <p class="mb-2 text-base">🌡️ Temp: <span class="font-medium">__°C</span></p>
+          <p class="mb-2 text-base">💨 Wind: <span class="font-medium">__ M/S</span></p>
+          <p class="mb-2 text-base">💧 Humidity: <span class="font-medium">__%</span></p>
+        </article>
+      </section>
+
+    </main>
+
+   
+  </div>
+  <script src="./script.js"></script>
 </body>
 </html>
