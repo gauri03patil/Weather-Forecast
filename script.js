@@ -83,16 +83,29 @@ const getWeatherDetails = (cityName, lat, lon) => {
 
 const getCityCoorinates = () => {
   const cityName = cityInput.value.trim();
-  if (!cityName) return;
+  // if (!cityName) return;
+  if (!cityName) {
+    alert("Please enter a city name");
+    return;
+  }
 
   const api_url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
 
   fetch(api_url)
     .then((res) => res.json())
     .then((data) => {
-      if (!data.length) return alert(`No city found for ${cityName} please enetr proper city or country name`);
+
+      console.log("Geocoding API response:", data);
+
+      if (!data.length || !data[0].name || !data[0].lat || !data[0].lon) {
+        alert(`No city found for "${cityName}". Please enter a proper city name.`);
+        return;
+      }
       const { name, lat, lon } = data[0];
+      
+      addCityToStorage(name)
       getWeatherDetails(name, lat, lon);
+
     })
     .catch(() => {
       alert("An error occurred while fetching data");
@@ -135,6 +148,8 @@ const addCityToStorage = (city) => {
 };
 
 // Update dropdown
+
+
 const updateDropdown = () => {
   const cities = getCities();
   dropdownContainer.classList.toggle("hidden", cities.length === 0);
@@ -149,21 +164,13 @@ recentDropdown.addEventListener("change", (e) => {
   fetchWeatherData(selectedCity);
 });
 
-// Search click
-searchBtn.addEventListener("click", () => {
-  const city = cityInput.value.trim();
-  if (city) {
-    fetchWeatherData(city);
-    addCityToStorage(city);
-  }
-});
 
 // Fetch weather
 const fetchWeatherData = (city) => {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`)
     .then((res) => res.json())
     .then((data) => {
-      if (data.cod !== "200") return alert("City not found!");
+      if (data.cod !== "200") return ;
 
       const list = data.list.filter((item) => item.dt_txt.includes("12:00:00"));
       const cityName = data.city.name;
