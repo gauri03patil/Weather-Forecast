@@ -50,27 +50,39 @@ const cerateWeatherCard = (cityName, weatherItem, index) => {
   }
 };
 
+
+//This function fetches weather data for a given city and displays it on the page
 const getWeatherDetails = (cityName, lat, lon) => {
+  //Create the URL for the weather API using the latitude and longitude of the city
   const weather_api_url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
+  //Fetch the weather data from the API
   fetch(weather_api_url)
     .then((res) => res.json())
     .then((data) => {
+      //Create an array to store the unique forecast days
       const uniqueForecastDays = [];
+      //Filter the forecast data to only include unique forecast days
       const fiveDayForecast = data.list.filter((forecast) => {
+        //Get the date of the forecast
         const forecastDate = new Date(forecast.dt_txt).getDate();
+        //If the date is not already in the uniqueForecastDays array, add it
         if (!uniqueForecastDays.includes(forecastDate)) {
           return uniqueForecastDays.push(forecastDate);
         }
       });
 
+      //Clear the input field and the weather card divs
       cityInput.value = "";
       currentWeatherDiv.innerHTML = "";
       weatherCardDiv.innerHTML = "";
 
+      //Loop through the five day forecast and create a weather card for each day
       fiveDayForecast.forEach((weatherItem, index) => {
+        //If the index is 0, create a weather card for the current day
         if (index === 0) {
           currentWeatherDiv.insertAdjacentHTML("beforeend", cerateWeatherCard(cityName, weatherItem, index));
+        //Otherwise, create a weather card for the other days
         } else {
           weatherCardDiv.insertAdjacentHTML("beforeend", cerateWeatherCard(cityName, weatherItem, index));
         }
